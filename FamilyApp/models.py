@@ -5,4 +5,5 @@ from django.forms import CharField
 class Familia(models.Model):
     nombreFamiliar = models.CharField(max_length=20)
     fechaNacimiento = models.DateField()
+    edad = models.IntegerField()
 

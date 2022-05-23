@@ -36,11 +36,11 @@ def saludoParametros(self):
     documento = plantilla.render(mi_contexto)
     return HttpResponse(documento)
 
-def saludoFamilia(self, nombreFamiliar: str = 'Nombre'):
+def saludoFamilia(self, nombreFamiliar: str = 'Nombre', edad: int = 0):
     
     plantilla = loader.get_template('templateApp.html')
-    familia = Familia(nombreFamiliar = nombreFamiliar, fechaNacimiento = datetime.now())
+    familia = Familia(nombreFamiliar = nombreFamiliar, fechaNacimiento = datetime.now(), edad = edad)
     familia.save()
-    contexto =  {'familia': familia}
+    contexto =  {'familia': familia,}
     documento = plantilla.render(contexto)
     return HttpResponse(documento)
