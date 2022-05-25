@@ -1,10 +1,12 @@
 from asyncore import read
+from django.shortcuts import render
 from datetime import datetime
 from multiprocessing import context
 from django.http import HttpResponse
 from django.template import Template, Context
 from django.template import loader
 from FamilyApp.models import Familia
+
 
 
 def saludo(request):
@@ -39,8 +41,13 @@ def saludoParametros(self):
 def saludoFamilia(self, nombreFamiliar: str = 'Nombre', edad: int = 0):
     
     plantilla = loader.get_template('templateApp.html')
-    familia = Familia(nombreFamiliar = nombreFamiliar, fechaNacimiento = datetime.now(), edad = edad)
+    fechaNacimiento = datetime.now()
+    familia = Familia(nombreFamiliar = nombreFamiliar, fechaNacimiento = fechaNacimiento, edad = edad)
     familia.save()
     contexto =  {'familia': familia,}
     documento = plantilla.render(contexto)
     return HttpResponse(documento)
+
+def home(request):
+    nombresListados = Familia.objects.all()
+    return render(request, "templateApp2.html", {"family": nombresListados})

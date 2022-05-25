@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
 </head>
 <body>
     <table border="1" border-collapse="collapse">
@@ -14,11 +13,15 @@
             <th>Fecha</th>
             <th>Edad</th>
         </tr>
-        <tr>
-            <td>{{familia.nombreFamiliar}}</td>
-            <td>{{familia.fechaNacimiento}}</td>
-            <td>{{familia.edad}}</td>
-        </tr>
+        <tbody>
+            {% for f in family %}
+            <tr>
+                <td>{{f.nombreFamiliar}}</td>
+                <td>{{f.fechaNacimiento}}</td>
+                <td>{{f.edad}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
     </table>
 </body>
 </html>

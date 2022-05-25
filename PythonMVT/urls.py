@@ -21,6 +21,7 @@ from PythonMVT.views import nombre
 from PythonMVT.views import saludoTemplate
 from PythonMVT.views import saludoParametros
 from PythonMVT.views import saludoFamilia
+from PythonMVT.views import home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,4 +31,5 @@ urlpatterns = [
     path('saludoTemplate/', saludoTemplate),
     path('saludoParametros/', saludoParametros),
     path('saludoFamilia/<str:nombreFamiliar>/<int:edad>/', saludoFamilia),
+    path('home/', home),
 ]
