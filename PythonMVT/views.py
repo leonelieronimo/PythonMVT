@@ -41,8 +41,7 @@ def saludoParametros(self):
 def saludoFamilia(self, nombreFamiliar: str = 'Nombre', edad: int = 0):
     
     plantilla = loader.get_template('templateApp.html')
-    fechaNacimiento = datetime.now()
-    familia = Familia(nombreFamiliar = nombreFamiliar, fechaNacimiento = fechaNacimiento, edad = edad)
+    familia = Familia(nombreFamiliar = nombreFamiliar, fechaNacimiento = datetime.now(), edad = edad)
     familia.save()
     contexto =  {'familia': familia,}
     documento = plantilla.render(contexto)
